@@ -18,5 +18,16 @@ pipeline{
          sh 'mvn package'
              }
      }
+     stage('Publish Test Reports') {
+       steps {
+         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/InsureMe Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+             }
+     }
+     stage{'Create docker image using package') {
+        steps {
+          echo 'Creating docker image from the package'
+          sh 'docker build -t joynaz/insureme-10may:1.0'
+             }
+     }
  }
  }
