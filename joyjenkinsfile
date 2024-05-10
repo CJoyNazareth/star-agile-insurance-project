@@ -24,7 +24,7 @@ pipeline{
           publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/InsureMeProject/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
              } 
     }
-    stage('Crete Image using the package') {
+    stage('Create Image using the package') {
       steps {
           echo 'creating docker image'
           sh 'docker build -t joynaz/insureme-10may:1.0 .'
